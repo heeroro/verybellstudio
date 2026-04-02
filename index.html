@@ -39,12 +39,15 @@
 
         .logo-area { display: flex; align-items: center; gap: 12px; }
         .logo-img { 
-            width: 55px; height: 55px; 
+            width: 60px; 
+            height: 60px; 
             border: 3px solid var(--vb-black);
-            background: white;
-            object-fit: cover;
-            object-position: center;
-            padding: 2px;
+            border-radius: 50%;    /* 사각형을 완전한 원형으로 만듦 */
+            background: white;     /* 로고 배경색 (필요시 로고 배경 핑크색인 #FFDDE2로 변경 가능) */
+            object-fit: cover;     /* 이미지가 틀에 꽉 차도록 확대/크롭 */
+            object-position: center; /* 로고의 중앙이 오도록 설정 */
+            padding: 0;            /* 선과 로고 사이의 빈 공간(여백) 제거 */
+            display: block;
         }
         .logo-text { font-weight: 900; font-size: 1.3rem; text-transform: uppercase; letter-spacing: -1px; }
 
