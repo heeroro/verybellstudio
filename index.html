@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verybell Studio | 베리벨 스튜디오</title>
+    <style>
+        /* 네오 브루탈리즘 & 도트 스타일 디자인 시스템 */
+        :root {
+            --bg: #ffffff;
+            --main: #ffeb3b; /* 메인 노랑색 */
+            --accent: #ff4081;
+            --border: #000000;
+        }
+
+        body {
+            background-color: var(--bg);
+            font-family: 'Pretendard', sans-serif;
+            margin: 0;
+            color: var(--border);
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 20px;
+            border-bottom: 4px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+        }
+
+        .logo { font-weight: 900; font-size: 1.5rem; }
+
+        .hero {
+            padding: 80px 20px;
+            text-align: center;
+            background: var(--main);
+            border-bottom: 4px solid var(--border);
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            line-height: 1.2;
+            margin-bottom: 30px;
+            word-break: keep-all;
+        }
+
+        .card {
+            background: white;
+            border: 4px solid var(--border);
+            box-shadow: 8px 8px 0px var(--border);
+            margin: 20px auto;
+            padding: 30px;
+            max-width: 900px;
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 12px 12px 0px var(--border);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border: 3px solid var(--border);
+            box-shadow: 4px 4px 0px var(--border);
+        }
+
+        .btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0px var(--border); }
+
+        /* 포트폴리오 그리드 */
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Verybell Studio</div>
+        <nav>연락 가능: 09:00~22:00</nav>
+    </header>
+
+    <section class="hero">
+        <h1>세상의 별의별 존재가<br>튼튼하게 등장하도록 영상을 찍습니다.</h1>
+        <p>성인지 및 인권 감수성에 기반한 영상 제작 스튜디오</p>
+        <br>
+        <a href="mailto:heeroroll@gmail.com" class="btn">문의하기</a>
+    </section>
+
+    <div class="work-grid">
+        <div class="card">
+            <h3>🎬 교육 영상 제작</h3>
+            <p>서울여성가족재단 등 공공기관 교육 영상 전문</p>
+        </div>
+        <div class="card">
+            <h3>🔴 실시간 중계</h3>
+            <p>안정적인 온라인 실시간 송출 지원</p>
+        </div>
+        <div class="card">
+            <h3>✍️ 대본 및 기획</h3>
+            <p>인권 감수성을 담은 세밀한 시나리오 작업</p>
+        </div>
+    </div>
+</body>
+</html>
