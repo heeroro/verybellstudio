@@ -5,189 +5,245 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verybell Studio | 베리벨 스튜디오</title>
     <style>
-        /* 베리벨 톤앤매너 디자인 시스템 */
+        /* [컬러 팔레트 - 4가지 색상 제한] */
         :root {
-            /* 로고의 분홍색 배경 */
-            --verybell-pink: #FFC0CB; /* 실제 로고 배경색과 가장 유사한 파스텔 핑크 */
-            --bg: #FFFFFF;
-            --text: #000000;
-            --main: var(--verybell-pink); 
-            --accent: #FF5252; /* 분홍색과 잘 어울리는 코랄 레드 */
-            --border: #000000;
-            --shadow: 8px 8px 0px var(--border);
+            --vb-pink-bg: #FFDDE2; /* 로고 배경 핑크 (헤더/히어로 배경) */
+            --vb-white: #FFFFFF;   /* 업무/포트폴리오 섹션 배경 */
+            --vb-black: #000000;   /* 굵은 테두리 및 텍스트 */
+            --vb-mint: #00E676;    /* 강렬한 강조색 (버튼/태그) */
+            --shadow: 8px 8px 0px var(--vb-black);
         }
 
         * { box-sizing: border-box; }
         body {
-            background-color: var(--main); /* 배경을 전체 분홍색으로 설정 */
+            background-color: var(--vb-white);
             font-family: 'Pretendard', -apple-system, sans-serif;
             margin: 0;
-            color: var(--text);
+            color: var(--vb-black);
             line-height: 1.6;
         }
 
-        /* 헤더 & 로고 */
+        /* 공통 스타일: 네오 브루탈리즘 카드 */
+        .vb-card {
+            background: var(--vb-white);
+            border: 4px solid var(--vb-black);
+            box-shadow: var(--shadow);
+            transition: 0.2s ease-in-out;
+        }
+        .vb-card:hover { transform: translate(-4px, -4px); box-shadow: 12px 12px 0px var(--vb-black); }
+
+        /* [1. 헤더 & 로고] - 핑크 배경 */
         header {
             padding: 15px 5%;
-            border-bottom: 4px solid var(--border);
+            border-bottom: 4px solid var(--vb-black);
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
-            background: var(--bg); /* 헤더는 깔끔하게 흰색 */
+            background: var(--vb-pink-bg);
             z-index: 100;
         }
 
         .logo-area { display: flex; align-items: center; gap: 15px; }
         .logo-img { 
-            width: 50px; height: 50px; 
-            border: 3px solid var(--border);
-            background: white; /* 로고가 흰 원 안에 들어가도록 */
-            object-fit: contain;
-            padding: 5px;
+            width: 60px; height: 60px; /* 로고 크기 확대 */
+            border: 3px solid var(--vb-black);
+            background: white;
+            object-fit: cover; /* 이미지를 크롭해서 맞춤 */
+            object-position: center; /* 중앙 케틀벨 강조 */
+            padding: 2px;
         }
-        .logo-text { font-weight: 900; font-size: 1.3rem; text-transform: uppercase; letter-spacing: -0.5px; }
+        .logo-text { font-weight: 900; font-size: 1.4rem; text-transform: uppercase; letter-spacing: -1px; }
 
-        /* 히어로 섹션 */
+        /* [2. 히어로 섹션] - 핑크 배경 */
         .hero {
-            padding: 100px 5%;
+            padding: 120px 5% 80px;
             text-align: center;
-            background: var(--main); /* 전체 분홍색 */
-            border-bottom: 4px solid var(--border);
+            background: var(--vb-pink-bg);
+            border-bottom: 4px solid var(--vb-black);
         }
 
         .hero h1 {
-            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-size: clamp(2.2rem, 7vw, 4rem);
             line-height: 1.2;
             margin-bottom: 30px;
             word-break: keep-all;
-            -webkit-text-stroke: 1px var(--border); /* 검은색 굵은 테두리 글씨 효과 */
-            color: white; /* 테두리 글씨 안쪽은 흰색 */
+            -webkit-text-stroke: 1px var(--vb-black);
+            color: white;
+        }
+
+        /* [3. 주요 업무 섹션] - 흰색 배경 */
+        .services-section {
+            padding: 80px 5%;
+            background: var(--vb-white);
         }
 
         .section-title {
             text-align: center;
-            padding: 60px 0 30px;
+            padding: 0 0 50px;
             font-size: 2.5rem;
             text-transform: uppercase;
-            color: white;
-            -webkit-text-stroke: 1.5px var(--border);
             letter-spacing: -1.5px;
+            -webkit-text-stroke: 1px var(--vb-black);
+            color: var(--vb-pink-bg);
         }
 
-        /* 포트폴리오 섹션 */
-        .work-grid {
+        .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-            padding: 20px 5% 100px;
-            max-width: 1300px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .work-card {
-            background: white;
-            border: 5px solid var(--border);
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            transition: 0.2s ease-in-out;
-            cursor: pointer;
+        .service-card { padding: 30px; text-align: center; }
+        .service-icon { font-size: 3rem; margin-bottom: 20px; display: block; }
+        .service-card h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        .service-card p { font-size: 0.95rem; color: #555; }
+
+        /* [4. 포트폴리오 섹션] - 흰색 배경, 지그재그 그리드 */
+        .portfolio-section {
+            padding: 80px 5% 120px;
+            background: var(--vb-white);
+            border-top: 4px solid var(--vb-black);
         }
 
-        .work-card:hover {
-            transform: translate(-6px, -6px);
-            box-shadow: 14px 14px 0px var(--border);
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2열 고정 */
+            gap: 50px;
+            max-width: 1300px;
+            margin: 0 auto;
+            align-items: start;
         }
+
+        /* 지그재그 효과: 홀수 번째 카드를 아래로 내림 */
+        .work-card:nth-child(odd) { transform: translateY(50px); }
+        .work-card:nth-child(odd):hover { transform: translateY(46px); } /* 호버 시 약간 이동 */
 
         .work-thumb {
             width: 100%;
-            height: 220px;
+            height: 350px; /* 레퍼런스처럼 세로로 긴 썸네일 */
             background: #eee;
-            border-bottom: 4px solid var(--border);
+            border-bottom: 4px solid var(--vb-black);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
             color: #999;
+            object-fit: cover;
         }
 
-        .work-info { padding: 25px; }
+        .work-info { padding: 30px; }
         .work-tag {
             display: inline-block;
-            padding: 5px 10px;
-            background: var(--verybell-pink); /* 태그에도 핑크색 적용 */
-            border: 3px solid var(--border);
+            padding: 5px 12px;
+            background: var(--vb-mint); /* 민트 강조색 */
+            border: 3px solid var(--vb-black);
             font-size: 0.9rem;
             font-weight: bold;
             margin-bottom: 15px;
+            text-transform: uppercase;
         }
 
+        /* [문의하기 버튼] - 민트색 */
         .btn-contact {
             display: inline-block;
-            padding: 20px 40px;
-            background: var(--accent);
-            color: white;
+            padding: 20px 45px;
+            background: var(--vb-mint);
+            color: var(--vb-black);
             text-decoration: none;
             font-weight: bold;
-            border: 4px solid var(--border);
-            box-shadow: 6px 6px 0px var(--border);
-            font-size: 1.2rem;
+            border: 4px solid var(--vb-black);
+            box-shadow: 6px 6px 0px var(--vb-black);
+            font-size: 1.3rem;
             transition: 0.1s;
         }
+        .btn-contact:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0px var(--vb-black); }
+        .btn-contact:active { transform: translate(3px, 3px); box-shadow: 3px 3px 0px var(--vb-black); }
 
-        .btn-contact:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0px var(--border); }
-        .btn-contact:active { transform: translate(3px, 3px); box-shadow: 3px 3px 0px var(--border); }
-
-        footer { text-align:center; padding: 50px; border-top: 4px solid black; background: white; }
+        footer { text-align:center; padding: 60px; border-top: 4px solid black; background: var(--vb-pink-bg); }
     </style>
 </head>
 <body>
     <header>
         <div class="logo-area">
-            <img src="logo_bell.jpg" alt="Verybell Studio Logo" class="logo-img">
+            <img src="logo.png" alt="Verybell Studio Logo" class="logo-img">
             <div class="logo-text">Verybell Studio</div>
         </div>
-        <nav>영상 제작 | 실시간 송출 | 기획</nav>
+        <nav>09:00 - 22:00 | 문의하기</nav>
     </header>
 
     <section class="hero">
-        <h1>세상의 별의별 존재가<br>튼튼한 모습으로 등장하도록<br>영상을 찍습니다.</h1>
-        <p style="font-size:1.1rem; color: #333; max-width: 600px; margin: 0 auto;">성인지 및 인권 감수성에 기반한<br>영상 제작 스튜디오</p>
+        <h1>세상의 별의별 존재가<br>튼튼한 모습으로登場하도록<br>영상을 찍습니다.</h1>
+        <p style="font-size:1.2rem; color: #333; max-width: 650px; margin: 0 auto; word-break: keep-all;">성인지 및 인권 감수성에 기반한<br>영상 제작 스튜디오</p>
         <br><br><br>
         <a href="mailto:heeroroll@gmail.com" class="btn-contact">프로젝트 문의하기</a>
     </section>
 
-    <h2 class="section-title">Latest Works</h2>
-    
-    <div class="work-grid">
-        <div class="work-card">
-            <div class="work-thumb">VIDEO THUMBNAIL</div>
-            <div class="work-info">
-                <span class="work-tag">교육 영상</span>
-                <h3 style="margin:5px 0; font-size:1.4rem;">공공기관 성인지 교육 시리즈</h3>
-                <p style="font-size:0.95rem; color:#666">서울여성가족재단 등 콘텐츠 기획 및 제작</p>
+    <section class="services-section">
+        <h2 class="section-title">What We Do</h2>
+        <div class="services-grid">
+            <div class="vb-card service-card">
+                <span class="service-icon">🎬</span>
+                <h3>교육 영상 제작</h3>
+                <p>공공기관 및 단체의 성인지/인권 교육 콘텐츠 기획 및 제작 전문</p>
+            </div>
+            <div class="vb-card service-card">
+                <span class="service-icon">🔴</span>
+                <h3>실시간 중계</h3>
+                <p>유튜브 스트리밍 및 라이브 커머스 등 안정적인 온라인 송출 지원</p>
+            </div>
+            <div class="vb-card service-card">
+                <span class="service-icon">✍️</span>
+                <h3>기획 및 대본</h3>
+                <p>세밀한 감수성을 담은 시나리오 작성 및 전체 프로젝트 기획</p>
             </div>
         </div>
+    </section>
 
-        <div class="work-card">
-            <div class="work-thumb">VIDEO THUMBNAIL</div>
-            <div class="work-info">
-                <span class="work-tag">실시간 중계</span>
-                <h3 style="margin:5px 0; font-size:1.4rem;">행사 라이브 스트리밍</h3>
-                <p style="font-size:0.95rem; color:#666">유튜브 실시간 송출 및 현장 스케치 기록</p>
+    <section class="portfolio-section">
+        <h2 class="section-title">Latest Works</h2>
+        
+        <div class="portfolio-grid">
+            <div class="vb-card work-card">
+                <div class="work-thumb">VIDEO THUMBNAIL (vertical)</div>
+                <div class="work-info">
+                    <span class="work-tag">교육 영상</span>
+                    <h3 style="margin:5px 0; font-size:1.5rem;">공공기관 성인지 교육 시리즈</h3>
+                    <p style="font-size:1rem; color:#666">서울여성가족재단 등 콘텐츠 제작</p>
+                </div>
             </div>
-        </div>
 
-        <div class="work-card">
-            <div class="work-thumb">VIDEO THUMBNAIL</div>
-            <div class="work-info">
-                <span class="work-tag">유튜브 영상과 팟캐스트</span>
-                <h3 style="margin:5px 0; font-size:1.4rem;">여자는 체력 팟캐스트</h3>
-                <p style="font-size:0.95rem; color:#666">운동을 주제로 한 영상과 팟캐스트</p>
+            <div class="vb-card work-card">
+                <div class="work-thumb">VIDEO THUMBNAIL (vertical)</div>
+                <div class="work-info">
+                    <span class="work-tag">실시간 송출</span>
+                    <h3 style="margin:5px 0; font-size:1.5rem;">인권 포럼 라이브 스트리밍</h3>
+                    <p style="font-size:1rem; color:#666">유튜브 라이브 및 현장 스케치 기록</p>
+                </div>
+            </div>
+
+            <div class="vb-card work-card">
+                <div class="work-thumb">VIDEO THUMBNAIL (vertical)</div>
+                <div class="work-info">
+                    <span class="work-tag">마을 기록</span>
+                    <h3 style="margin:5px 0; font-size:1.5rem;">우리 동네 활동가 다큐멘터리</h3>
+                    <p style="font-size:1rem; color:#666">마포구 성산동 활동가 기록 영상</p>
+                </div>
+            </div>
+
+            <div class="vb-card work-card">
+                <div class="work-thumb">VIDEO THUMBNAIL (vertical)</div>
+                <div class="work-info">
+                    <span class="work-tag">기획 및 대본</span>
+                    <h3 style="margin:5px 0; font-size:1.5rem;">성인지 콘텐츠 시나리오 개발</h3>
+                    <p style="font-size:1rem; color:#666">인권 감수성 기반 세밀한 기획 작업</p>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <footer>
         <p>© 2026 Verybell Studio. All rights reserved.</p>
